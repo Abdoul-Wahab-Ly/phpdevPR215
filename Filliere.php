@@ -9,11 +9,11 @@ class Filliere
 * Permet de modeliser les informations sur une Filliere
 
 */
-    private string $id;
-    private string $nomFilliere;
-    private string $description;
-    private int $nombreAnnee;
-    private static int $nombreFilliereCreer = 0;
+    protected string $id;
+    protected string $nomFilliere;
+    protected string $description;
+    protected int $nombreAnnee;
+    protected static int $nombreFilliereCreer = 0;
 
 
     public function __construct($id, $nomFilliere, $description, $nombreAnnee)
