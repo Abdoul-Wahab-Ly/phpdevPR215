@@ -72,43 +72,43 @@ class Badge
     public function setNumInscription($numInscription)
     {
 
-        return $this->numInscription = $numInscription;
+        $this->numInscription = $numInscription;
     }
 
     public function setFilliere($filliere)
     {
 
-        return $this->filliere = $filliere;
+        $this->filliere = $filliere;
     }
 
     public function setGroupe($groupe)
     {
 
-        return $this->groupe = $groupe;
+        $this->groupe = $groupe;
     }
 
     public function setMatricule($matricule)
     {
 
-        return $this->matricule = $matricule;
+        $this->matricule = $matricule;
     }
 
     public function setAnneeAcademique($anneeAcademique)
     {
 
-        return $this->anneeAcademique = $anneeAcademique;
+        $this->anneeAcademique = $anneeAcademique;
     }
 
     public function setPrenom($prenom)
     {
 
-        return $this->prenom = $prenom;
+        $this->prenom = $prenom;
     }
 
     public function setNom($nom)
     {
 
-        return $this->nom = $nom;
+        $this->nom = $nom;
     }
 
     // La methode toString
@@ -137,7 +137,7 @@ $badge1 = new Badge("L2PR265", "Programmation", "PR215", "SIDK5358", "2020-2021"
 // $badge1->prenom = "Abdoul Wahab";
 // $badge1->nom = "Ly";
 
-$badge1->__toString();
+echo $badge1->__toString();
 
 // echo "$badge1->prenom <br>";
 // echo "$badge1->nom <br>";
