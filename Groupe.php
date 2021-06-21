@@ -1,5 +1,6 @@
 <?php
-
+require_once("Filliere.php");
+require_once("Anneeacademique.php");
 
 class Groupe
 {
@@ -10,17 +11,22 @@ class Groupe
 */
     public string $id;
     public string $nomGroupe;
-    public int $nombreEtudiant;
+    public string $niveauEtude;
+    private Filliere $filliere;
+    private Anneeacademique $anneeacademique;
 
-    function __construct($id, $nomGroupe, $nombreEtudiant)
+
+    function __construct($id, $nomGroupe, $niveauEtude, Filliere $filliere, Anneeacademique $anneeacademique)
     {
         $this->id = $id;
         $this->nomGroupe = $nomGroupe;
-        $this->nombreEtudiant = $nombreEtudiant;
+        $this->niveauEtude = $niveauEtude;
+        $this->filliere = $filliere;
+        $this->anneeacademique = $anneeacademique;
     }
 
     // pour les methodes get
-    public function getid()
+    public function getId()
     {
         return $this->id;
     }
@@ -30,10 +36,21 @@ class Groupe
         return $this->nomGroupe;
     }
 
-    public function getNombreEtudiant()
+    public function getNiveauetude()
     {
-        return $this->nombreEtudiant;
+        return $this->niveauEtude;
     }
+
+    public function getFilliere()
+    {
+        return $this->filliere;
+    }
+
+    public function getAnneeacademique()
+    {
+        return $this->anneeacademique;
+    }
+
 
     // Les methodes set
 
@@ -47,21 +64,34 @@ class Groupe
         $this->nomGroupe = $nomGroupe;
     }
 
-    public function setNombreEtudiant($nombreEtudiant)
+    public function setNiveauetude($niveauEtude)
     {
-        $this->nombreEtudiant = $nombreEtudiant;
+        $this->niveauEtude = $niveauEtude;
     }
 
-    public function __toString()
+    public function setFilliere(Filliere $filliere)
     {
-        return nl2br("
-        ID                 : $this->id
-        Nom du Groupe      : $this->nomGroupe
-        Nombre d'Etudiants : $this->nombreEtudiant
-        <br> <br>");
+        $this->filliere = $filliere;
+    }
+
+    public function setAnneeeacademique(Anneeacademique $anneeacademique)
+    {
+        $this->anneeacademique = $anneeacademique;
+    }
+
+
+    function __toString()
+    {
+        return "Nom du groupe: " . $this->getNomGroupe() . "</br>
+            Niveau d'etude: " . $this->getNiveauEtude() . "</br>
+            Filiere : " . $this->filliere->getNom() . "</br>
+            Annee Academique: " . $this->anneeacademique->getDesignation() . "</br>
+            ===============================================================<br/>";
     }
 }
+$filliere = new Filliere("1", "Programmation", "Programmation et developpement d'application web et mobile", 5);
+$anneeacademique = new Anneeacademique("1", "2020/ 2021");
 
-$group1 = new Groupe("1", "PR215", 20);
+$group1 = new Groupe("1", "PR215", "licence2", $filliere, $anneeacademique);
 
 echo $group1->__toString();

@@ -1,5 +1,8 @@
 <?php
 
+require_once "Filliere.php";
+require_once "Etudiant.php";
+
 class Badge
 {
     /* 
@@ -8,32 +11,20 @@ class Badge
 
 */
 
-    public $numInscription;
-    public $filliere;
-    public $groupe;
-    public $matricule;
-    public $anneeAcademique;
-    public $prenom;
-    public $nom;
+    private int $id;
+    private Filliere $filliere;
+    private Etudiant $etudiant;
 
-
-
-    function __construct($numInscription, $filliere, $groupe, $matricule, $anneeAcademique, $prenom, $nom)
+    public function __construct($id, Filliere $filliere, Etudiant $etudiant)
     {
-        $this->numInscription = $numInscription;
+        $this->id = $id;
         $this->filliere = $filliere;
-        $this->groupe = $groupe;
-        $this->matricule = $matricule;
-        $this->anneeAcademique = $anneeAcademique;
-        $this->prenom = $prenom;
-        $this->nom = $nom;
+        $this->etudiant = $etudiant;
     }
 
-
-    // Pour les mrthodes de get
-    public function getNumInscription()
+    public function getId()
     {
-        return $this->numInscription;
+        return $this->id;
     }
 
     public function getFilliere()
@@ -41,94 +32,37 @@ class Badge
         return $this->filliere;
     }
 
-    public function getGroupe()
+    public function getEtudiant()
     {
-        return $this->groupe;
-    }
-
-    public function getMatricule()
-    {
-        return $this->matricule;
-    }
-
-    public function getAnneeAcademique()
-    {
-        return $this->anneeAcademique;
-    }
-
-    public function getPrenom()
-    {
-        return $this->prenom;
-    }
-
-    public function getNom()
-    {
-        return $this->nom;
+        return $this->etudiant;
     }
 
 
-
-    // Pour les methodes set
-    public function setNumInscription($numInscription)
+    public function setId($id)
     {
-
-        $this->numInscription = $numInscription;
+        $this->id = $id;
     }
 
     public function setFilliere($filliere)
     {
-
         $this->filliere = $filliere;
     }
 
-    public function setGroupe($groupe)
+    function __toString()
     {
-
-        $this->groupe = $groupe;
-    }
-
-    public function setMatricule($matricule)
-    {
-
-        $this->matricule = $matricule;
-    }
-
-    public function setAnneeAcademique($anneeAcademique)
-    {
-
-        $this->anneeAcademique = $anneeAcademique;
-    }
-
-    public function setPrenom($prenom)
-    {
-
-        $this->prenom = $prenom;
-    }
-
-    public function setNom($nom)
-    {
-
-        $this->nom = $nom;
-    }
-
-    // La methode toString
-
-    public function __toString()
-    {
-        return nl2br("
-        Nom                : $this->nom
-        Prenom             : $this->prenom
-        Numero Inscription : $this->numInscription
-        Nom Filliere       : $this->filliere
-        Groupe             : $this->groupe
-        Matricule          : $this->matricule
-        Annee Academique   : $this->anneeAcademique
-        <br> <br>");
+        return nl2br(" ID               : " . $this->getId() . "</br>
+                       Prenom Etudiant  : " . $this->etudiant->getPrenom() . "</br>
+                       Nom Etudiant     : " . $this->etudiant->getNom() . "</br>
+                       Nom Etudiant     : " . $this->etudiant->getMatricule() . "</br>
+                       Filiere          : " . $this->filliere->getNom() . "</br>
+            ===============================================================<br/>");
     }
 }
 
 // Objet Badge
-$badge1 = new Badge("L2PR265", "Programmation", "PR215", "SIDK5358", "2020-2021", "Abdoul Wahab", "Ly");
+$filliere = new Filliere("1", "Programmation", "Programmation et developpement d'application web et mobile", 5);
+$etudiant1 = new Etudiant(1, "Abdoul Wahab", "Ly", "SIDK009876");
+$badge1 = new Badge(1, $filliere, $etudiant1);
 // $badge1->numInscription = "L2PR265";
 // $badge1->matricule = "SIDK5358";
 // $badge1->filliere = "Programmation";

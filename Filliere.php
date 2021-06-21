@@ -1,6 +1,6 @@
 <?php
 
-use Filliere as GlobalFilliere;
+
 
 class Filliere
 {
@@ -9,19 +9,18 @@ class Filliere
 * Permet de modeliser les informations sur une Filliere
 
 */
-    protected string $id;
-    protected string $nomFilliere;
-    protected string $description;
-    protected int $nombreAnnee;
-    protected static int $nombreFilliereCreer = 0;
+    public string $id;
+    public string $nomFilliere;
+    public string $description;
+    public int $nombreAnnee;
+    public static int $nombreFilliereCreer = 0;
 
 
-    public function __construct($id, $nomFilliere, $description, $nombreAnnee)
+    public function __construct($id, $nomFilliere, $description)
     {
         $this->id = $id;
         $this->nomFilliere = $nomFilliere;
         $this->description = $description;
-        $this->nombreAnnee = $nombreAnnee;
         self::$nombreFilliereCreer++;
     }
 
@@ -48,11 +47,7 @@ class Filliere
         return $this->description;
     }
 
-    function getNombreAnnee()
-    {
 
-        return $this->nombreAnnee;
-    }
 
 
     //C'est pour les set
@@ -76,11 +71,6 @@ class Filliere
         $this->description = $description;
     }
 
-    function setNombreAnnee($nombreAnnee)
-    {
-
-        $this->nombreAnnee = $nombreAnnee;
-    }
 
     public static function getNombreFilliereCreer()
     {
@@ -94,13 +84,13 @@ class Filliere
         return nl2br("ID             : $this->id
         Nom Filliere   : $this->nomFilliere
         Description    : $this->description
-        Nombre d'Annee : $this->nombreAnnee<br> <br>");
+       <br> <br>");
     }
 }
 
-$filliere = new GlobalFilliere("1", "Programmation", "Programmation et developpement d'application web et mobile", 5);
-echo "Nombre de filliere creer " . Filliere::getNombreFilliereCreer() . '<br>';
-echo $filliere->__toString();
-$filliere->setId("500");
-echo "Nombre de filliere creer " . Filliere::getNombreFilliereCreer() . '<br>';
-echo $filliere->__toString();
+// $filliere = new GlobalFilliere("1", "Programmation", "Programmation et developpement d'application web et mobile", 5);
+// echo "Nombre de filliere creer " . Filliere::getNombreFilliereCreer() . '<br>';
+// echo $filliere->__toString();
+// $filliere->setId("500");
+// echo "Nombre de filliere creer " . Filliere::getNombreFilliereCreer() . '<br>';
+// echo $filliere->__toString();
